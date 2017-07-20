@@ -10,3 +10,5 @@
 
 ## cookie
 
+cookie 非常方便，它分为临时和持久这两种，临时 cookie 在浏览器关闭的时候就会销毁，但是持久 cookie 会在过期的时候才会销毁，cookie 本质上是一个键值对，但是添加了像 domian， path ， expires（在 cookie2 中是 max-age） 这样的属性来保持有序和可控，域名与路径可以保证cookie 不会在不同域名间传递，而 expires 保证有效性的可控，cookie 是带在 http头部传送过去的，所以我们应该尽量减少 cookie 的数量和大小。
+而 session 是建立在 cookie 上面的，此时的 cookie 记录的是 session 的 ID 值。但是在使用 node 的时候 session 貌似是一个学问，session 等我接下来研究后再总结。
