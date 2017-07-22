@@ -1,8 +1,15 @@
 # quirks mode and strict mode && the difference between == and ===
 
 ## quirks mode and strict mode
-strict mode 就是标准模式, 按照 W3C 标准, quirks mode 就是怪异模式, 按照浏览器自己的标准.
-
+strict mode 就是标准模式, 按照 W3C 标准, quirks mode 就是怪异模式, 按照浏览器自己的标准. 可以使用
+```
+window.top.document.compatMode  //来判断是否是标准模式
+```
+它们差别在于:
+在标准模式下, width 是内容宽度, 元素的真正宽度是 margin-left + border-left + padding-left + width + paddding-right + border-right + margin-right.也就是所谓的水平格式化.
+但是在怪异模式下, width 是盒子的宽度, 内容宽度是 width - (margin-left + border-left + padding-left + paddding-right + border-right + margin-right);
+而且在怪异模式在, 标准模式的限定宽度的盒子 margin: 0 auto 的居中方法没用, 需要用 text-align: center;
+在标准模式下, 盒子的高度是内容撑开的, 如果父元素没有设置高度, 子元素设置百分比高度无用.
 
 ## the difference between == and ===
 
@@ -21,4 +28,15 @@ var a = {
 }
 
 a == '[object Object]' // true
+```
+
+而且我还发现,如果你用数组来比较的话, 是先进行 valueOf, 然后再执行 toString 的
+```
+var a = [{ test: 1 }];
+
+a.valueOf();  // [object]
+
+a.valueOf().toString() //'[object Object]'
+
+a == '[object Object]'  
 ```
