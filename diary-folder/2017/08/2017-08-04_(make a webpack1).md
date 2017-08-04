@@ -1,4 +1,4 @@
-# make a webpack
+# make a webpack1
 
 昨天看了 bundle.js 里面的东西，而对于 webpack 来说，就是如何将多个模块或者是文件打包成这样的单文件，分为几个步骤：
 1. 可以发现 bundle.js 和打包后的模块格式都是类似的，应该有一个模板文件
