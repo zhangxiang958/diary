@@ -42,4 +42,18 @@ function Module(id){
 }
 ```
 
+npm 是 node 用来管理包的, 一个包分为包结构和包描述, 包结构就是 lib 中编写的 js 模块, 包描述就是 package.json.
+script 字段是用来说明脚本的, bin 是用来当作命令行来使用的.
+
+npm 常用命令有:
+```
+npm -V  查看 npm 版本
+npm install 会将模块安装到 path.resolve(process.execPath, '..', '..', 'lib', 'node_modules');  如果可执行文件的位置是 /usr/local/bin/node 那么最后就是 /usr/local/
+也可以使用 npm install module_name --registry=http://example.com 指定源安装
+发布包: npm publish
+初始化 package.json: npm init
+查看当前路径下所有包: npm ls
+
+```
+
 
