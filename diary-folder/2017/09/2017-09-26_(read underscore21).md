@@ -18,6 +18,34 @@ _.map = function(obj, iteratee, context){
   return results;
 }
 ```
+但是, 不是每个人或者说每个团队都会使用 underscore, 因为每一次使用新的类库是需要学习成本的, 所以我想将这个成本降低到最低(自实现一遍).
+```
+function keys(obj) {
+  var keys = [];
+  for(var key in obj) {
+    if(obj.hasOwnProperty(key)) {
+      keys.push(key);
+    }
+  }
+  return keys;
+}
+
+function map(obj, iteratee, context){
+
+  var keys = !obj.length && keys(obj)
+      length = (keys || obj).length,
+      results = Array(length);
+  
+  for(var index = 0; index < length; index ++) {
+    var currentKey = keys ? keys[index] : index;
+    results[index] = iteratee(obj[currentKey], currentKey, obj);
+  }
+
+  return results;
+}
+```
+
+
 reduce 对应着归约, 也就是会将一个集合中的元素通过某个规则然后集合成一个数字.
 ```
 function createReducer(dir){
