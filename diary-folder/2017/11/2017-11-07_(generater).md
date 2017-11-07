@@ -39,3 +39,4 @@ var g = gen(1);
 g.next();
 g.throw('error');
 ```
+ continue to learn generater.
