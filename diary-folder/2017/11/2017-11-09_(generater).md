@@ -38,3 +38,24 @@ run(function* gen(){
   console.log(listData, UserData);
 });
 ```
+之前不理解为什么 koa 里面不管是路由还是其他中间件, 一律都是:
+```
+app.use(function* (next){
+  // do something
+  yield next;
+  // do something
+});
+```
+这样的写法, 第一 koa 依赖于 co 类库, 第二这样其实还是像 express 里面的一样, 只不过在 express 里面, request, response 是在函数参数里面的, 当然还有 next, 而 koa 里面不用:
+```
+app.use(function (request, response, next){
+  next();
+});
+
+=> 
+app.use(function* (next){
+  this.request;
+  this.response;
+  yield next;
+});
+```
