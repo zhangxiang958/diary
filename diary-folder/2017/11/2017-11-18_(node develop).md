@@ -23,3 +23,19 @@ for(var i = 0; i < 3; i ++) {
 ```
 git commit 直接使用可以直接写多行 commit, 而不是只有一个简短的信息, 这样有利于合作.
 生成 .gtignore 文件: git config --global core.excludesfile ~/.gitignore
+git show id 可以显示某个 commit 的详细信息
+git tag xxx id 可以为某个 id 为 id 的 commit 打上一个 tag 为 xxx.
+其实 git remote add 可以添加多个远程仓库的, 只需要在后面添加远程仓库的名字就可以了.
+
+本地合并完分支之后: 
+git checkout master
+git merge bugfix
+
+推送到远程仓库:
+git push --set-upstream origin master
+
+如果需要删除本地分支:
+git branch --delete bugfix
+
+如果需要删除远程分支:
+git push --delete origin bugfix 
